@@ -49,9 +49,9 @@ on:
           - orc8r-tenants
 
 jobs:
-  promote:
+  promote-all:
     if: github.event.inputs.charm-name == 'all'
-    name: Promote Charm
+    name: Promote All Charms
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -106,9 +106,9 @@ jobs:
           fi
       - name: Promote all Charms
         run: echo "all"
-  promoteall:
+  promote:
       if: github.event.inputs.charm-name != 'all'
-      name: Promote all Charms
+      name: Promote Charm
       runs-on: ubuntu-latest
       steps:
         - name: Checkout
