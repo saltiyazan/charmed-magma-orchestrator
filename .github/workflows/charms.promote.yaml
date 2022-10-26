@@ -105,21 +105,8 @@ jobs:
           fi
       - name: Promote Charm
         if: github.event.inputs.charm-name != 'all'
-        uses: canonical/charming-actions/release-charm@1.0.3
-        with:
-          credentials: ${{ secrets.CHARMCRAFT_AUTH }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          destination-channel: latest/${{ env.promote-to }}
-          origin-channel: latest/${{ env.promote-from }}
-          tag-prefix: magma-${{ github.event.inputs.charm-name }}
-          charm-path: ./${{ github.event.inputs.charm-name }}-operator
+        run: echo "not all"
       - name: Promote All Charms
         if: github.event.inputs.charm-name == 'all'
-        uses: canonical/charming-actions/release-charm@1.0.3
-        with:
-          credentials: ${{ secrets.CHARMCRAFT_AUTH }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          destination-channel: latest/${{ env.promote-to }}
-          origin-channel: latest/${{ env.promote-from }}
-          tag-prefix: magma-${{ matrix.charms }}
-          charm-path: ./${{ matrix.charms }}-operator
+        run: echo "${{ matrix.charms }}"
+
